@@ -1,0 +1,36 @@
+name: Deploy React to GitHub Pages
+
+on: 
+  push:
+    branches: 
+      - main 
+
+permissions: 
+  content: read
+  pages: write
+  id-token: write
+
+jobs: 
+  build-and-deploy:
+    runs_on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        user: actions/setup-node@v4
+        with: 
+          node-version: 
+            node-version: 22
+            cache: npm
+      - name: Install dependecies
+        run: npm ci
+      - name: build project
+        run: npm run build 
+
+      - name: Deploy to GitHub Pages
+        uses: Jameslves/github-pages-deploy-action@v4
+        with: 
+          branch: gh-pages
+          folder: dist 
+          
