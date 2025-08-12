@@ -18,7 +18,7 @@ function App() {
       <h2>My first page in github pages - Fabio Fischer </h2>
       <h3>Um texto topper</h3>
       <img
-        src="./acabate.jpg"
+        src='https://i.pinimg.com/originals/04/dd/40/04dd40c0ef681020793b9375011a1f35.jpg'
         alt="Abacte"
       />
       <div className="card">
