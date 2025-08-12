@@ -18,8 +18,8 @@ function App() {
       <h2>My first page in github pages - Fabio Fischer </h2>
       <h3>Um texto topper</h3>
       <img
-        src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
-        alt="Logo React"
+        src="./acabate.jpg"
+        alt="Abacte"
       />
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
