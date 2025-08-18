@@ -6,7 +6,7 @@ on:
       - main
 
 permissions:
-  contents: write   # <- era "content"
+  contents: read   # <- era "content"
   pages: write
   id-token: write
 
