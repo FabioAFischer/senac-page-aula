@@ -6,12 +6,12 @@ on:
       - main
 
 permissions:
-  contents: write   # <- era "content"
+  contents: read   # <- era "content"
   pages: write
   id-token: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,8 +30,18 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifacts@v3
         with:
-          branch: gh-pages
-          folder: dist   # se for CRA, use "build"
+          path: dist
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to gihhub pages
+        id: deployment
+        uses: actions/deploy-pages@v4
